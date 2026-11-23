@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: reposteria_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: miusuario
+      POSTGRES_PASSWORD: mipassword
+      POSTGRES_DB: mibasededatos
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: reposteria_backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: db
+      DB_USER: miusuario
+      DB_PASSWORD: mipassword
+      DB_NAME: mibasededatos
+      DB_PORT: 5432
+      JWT_SECRET: secreto_super_seguro_123
+    volumes:
+      - uploads:/usr/src/app/uploads
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+  uploads:

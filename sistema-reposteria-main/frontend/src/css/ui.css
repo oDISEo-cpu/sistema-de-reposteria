@@ -1,0 +1,1069 @@
+/* =====================================================================
+   Tema CARAMELO / TOSTADO — estilos compartidos del sistema
+   Colocar en: src/css/ui.css  (reemplaza el anterior)
+   Lo importa el layout (global) y las páginas que usan clases "ui-".
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Paleta */
+  --bg: #fbf3e6;
+  --bg-2: #f5e4cb;
+  --panel: rgba(255, 253, 249, 0.94);
+  --panel-2: rgba(217, 130, 43, 0.1);
+  --line: rgba(120, 70, 30, 0.18);
+  --ink: #3b2112;
+  --mute: rgba(59, 33, 18, 0.64);
+  --accent: #c26a1c;
+  --accent-2: #e19434;
+  --accent-ink: #9a4f10;
+  --choco: #3a2012;
+  --choco-2: #26140a;
+  --hi: #2a8453;
+  --mid: #b0720f;
+  --lo: #c2573d;
+  --neg: #bf3a2c;
+  --shadow: rgba(92, 48, 14, 0.22);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Colores de marca de Quasar: todo lo que use color="primary" queda caramelo */
+  --q-primary: #c26a1c;
+  --q-secondary: #8a4b1f;
+  --q-accent: #e19434;
+  --q-positive: #2a8453;
+  --q-negative: #bf3a2c;
+  --q-warning: #d99a1e;
+  --q-info: #b5651d;
+}
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+}
+.q-layout,
+.q-page-container {
+  background: transparent;
+}
+
+/* ---------- Piel global de Quasar (Inventario y diálogos) ---------- */
+.q-card {
+  border-radius: 18px;
+}
+.q-card--bordered {
+  border-color: var(--line);
+}
+.q-table__card,
+.q-card.q-table__card {
+  background: var(--panel);
+  color: var(--ink);
+}
+.q-table--bordered {
+  border: 1px solid var(--line);
+}
+.q-table__card.q-table--bordered {
+  border-radius: 18px;
+  overflow: hidden;
+}
+.q-table thead th {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  background: rgba(217, 130, 43, 0.08);
+}
+.q-table tbody tr:hover td {
+  background: rgba(217, 130, 43, 0.07);
+}
+.q-table tbody td,
+.q-table thead tr,
+.q-table tbody td:after {
+  border-color: var(--line);
+}
+.q-table__bottom {
+  color: var(--mute);
+  border-top: 1px solid var(--line);
+}
+.q-btn {
+  letter-spacing: 0;
+}
+.q-btn.bg-primary,
+.q-btn--standard.bg-primary,
+.q-btn--unelevated.bg-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+  box-shadow: 0 6px 16px var(--shadow);
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.q-btn.bg-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px var(--shadow);
+}
+.q-field--outlined .q-field__control {
+  border-radius: 10px;
+}
+.q-field--outlined .q-field__control:before {
+  border-color: var(--line);
+}
+.q-dialog__backdrop {
+  background: rgba(40, 20, 8, 0.5);
+  backdrop-filter: blur(3px);
+}
+.q-dialog .q-card:not(.ui-dialog):not(.rc-dialog) {
+  background: #fffaf1;
+  box-shadow: 0 30px 70px rgba(40, 20, 8, 0.4);
+}
+.q-menu {
+  border-radius: 12px;
+  background: #fffaf1;
+  box-shadow: 0 16px 40px rgba(40, 20, 8, 0.28);
+}
+.q-item--active,
+.q-item.q-router-link--active {
+  color: var(--accent);
+}
+.q-notification {
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+/* ---------- Página ---------- */
+.ui-page {
+  color: var(--ink);
+  background: transparent;
+}
+.ui-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px clamp(14px, 3vw, 40px) 80px;
+}
+.ui-rise {
+  animation: uiRise 0.6s var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes uiRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.ui-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.ui-eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ui-title {
+  margin: 0;
+  font-size: clamp(30px, 4.4vw, 44px);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--choco);
+}
+.ui-sub {
+  margin: 8px 0 0;
+  max-width: 60ch;
+  color: var(--mute);
+  font-size: 15px;
+}
+
+/* Botones */
+.ui-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font: 600 15px/1 'IBM Plex Sans', sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 10px 24px var(--shadow);
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.ui-cta:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px var(--shadow);
+}
+.ui-cta:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.ui-cta:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.ui-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: 500 14px/1 'IBM Plex Sans', sans-serif;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.ui-ghost:hover {
+  background: var(--panel-2);
+  border-color: var(--accent-2);
+}
+.ui-ico {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--mute);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.ui-ico:hover:not(:disabled) {
+  background: var(--panel-2);
+  color: var(--accent-ink);
+  transform: translateY(-1px);
+}
+.ui-ico.danger:hover:not(:disabled) {
+  background: rgba(191, 58, 44, 0.12);
+  color: var(--neg);
+}
+.ui-ico.locked {
+  opacity: 0.45;
+}
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* Resumen */
+.ui-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.ui-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow: 0 8px 22px rgba(92, 48, 14, 0.08);
+  transition:
+    transform 0.25s var(--ease),
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.ui-stat:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-2);
+  box-shadow: 0 16px 30px var(--shadow);
+}
+.ui-stat.alert {
+  border-color: rgba(191, 58, 44, 0.4);
+}
+.ui-stat-ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  color: var(--tc, var(--accent));
+  background: color-mix(in srgb, var(--tc, var(--accent)) 14%, transparent);
+}
+.ui-t-accent {
+  --tc: #c26a1c;
+}
+.ui-t-amber {
+  --tc: #b0720f;
+}
+.ui-t-pink {
+  --tc: #b8476b;
+}
+.ui-t-warn {
+  --tc: #bf3a2c;
+}
+.ui-t-good {
+  --tc: #2a8453;
+}
+.ui-stat-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ui-stat-k {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.ui-stat-v {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ui-stat-h {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+/* Herramientas */
+.ui-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.ui-search {
+  flex: 1 1 260px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--mute);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.ui-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(194, 106, 28, 0.2);
+}
+.ui-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+}
+.ui-search input::placeholder {
+  color: var(--mute);
+}
+.ui-seg {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ui-seg::-webkit-scrollbar {
+  display: none;
+}
+.ui-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--mute);
+  cursor: pointer;
+  white-space: nowrap;
+  font: 500 13.5px/1 'IBM Plex Sans', sans-serif;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.ui-pill b {
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: rgba(194, 106, 28, 0.14);
+  color: var(--accent-ink);
+}
+.ui-pill:hover {
+  color: var(--ink);
+  background: var(--panel-2);
+}
+.ui-pill.on {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+.ui-pill.on b {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+.ui-pill.sm {
+  height: 30px;
+  padding: 0 11px;
+  font-size: 13px;
+  border-color: var(--line);
+}
+.ui-pill.hue {
+  --hc: hsl(var(--h, 30) 62% 36%);
+}
+.ui-pill.hue:not(.on) {
+  color: var(--hc);
+}
+.ui-pill.hue.on {
+  background: hsl(var(--h, 30) 62% 40%);
+}
+
+/* Chips de estado */
+.ui-chip {
+  --hc: hsl(var(--h, 30) 62% 30%);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid hsl(var(--h, 30) 60% 72%);
+  border-radius: 999px;
+  background: hsl(var(--h, 30) 80% 93%);
+  color: var(--hc);
+  font: 600 13px/1 'IBM Plex Sans', sans-serif;
+  white-space: nowrap;
+}
+button.ui-chip {
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s;
+}
+button.ui-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px var(--shadow);
+}
+.ui-chip.sm {
+  min-height: 24px;
+  padding: 0 9px;
+  font-size: 12px;
+}
+.ui-chip.neutral {
+  border-color: var(--line);
+  background: rgba(59, 33, 18, 0.06);
+  color: var(--mute);
+}
+.ui-meter {
+  display: block;
+  width: 100%;
+  max-width: 120px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(59, 33, 18, 0.12);
+  overflow: hidden;
+}
+.ui-meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--tone, var(--accent));
+  transition: width 0.5s var(--ease);
+}
+
+/* Estados vacíos y carga */
+.ui-skel {
+  height: 320px;
+  border-radius: 18px;
+  background: linear-gradient(100deg, rgba(217, 130, 43, 0.08) 30%, rgba(217, 130, 43, 0.2) 50%, rgba(217, 130, 43, 0.08) 70%) 0 0 / 300% 100%;
+  animation: uiSk 1.3s linear infinite;
+}
+@keyframes uiSk {
+  to {
+    background-position: -300% 0;
+  }
+}
+.ui-empty {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 56px 20px;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 20px;
+  background: var(--panel);
+}
+.ui-empty h2 {
+  margin: 4px 0 0;
+  font-size: 21px;
+}
+.ui-empty p {
+  margin: 0 0 10px;
+  max-width: 44ch;
+  color: var(--mute);
+}
+.ui-empty-ico {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  color: var(--accent);
+  background: rgba(194, 106, 28, 0.12);
+}
+.ui-nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 12px;
+  color: var(--mute);
+}
+
+/* Tabla de pedidos */
+.ui-table.q-table__card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 10px 28px rgba(92, 48, 14, 0.1);
+}
+.ui-table .q-table td {
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+.ui-table .q-table th {
+  padding: 12px 14px;
+}
+.ui-tr {
+  animation: uiRise 0.45s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+.ui-tr.flash td {
+  animation: uiFlash 1.6s ease;
+}
+@keyframes uiFlash {
+  0% {
+    background: rgba(225, 148, 52, 0.45);
+  }
+  100% {
+    background: transparent;
+  }
+}
+.ui-mute {
+  color: var(--mute);
+}
+.ui-num {
+  font-variant-numeric: tabular-nums;
+}
+.ui-strong {
+  font-weight: 700;
+}
+.ui-name {
+  display: block;
+  font-weight: 600;
+}
+.ui-sm {
+  display: block;
+  font-size: 12px;
+  color: var(--mute);
+}
+.ui-lab {
+  display: none;
+}
+.ui-acts {
+  display: flex;
+  gap: 2px;
+}
+
+/* Menús emergentes (q-menu con class="ui-menu") */
+.ui-menu {
+  background: #fffaf1 !important;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(40, 20, 8, 0.3);
+}
+.ui-menu .q-item {
+  border-radius: 8px;
+  margin: 2px 6px;
+}
+.ui-menu .q-item:hover,
+.ui-menu .q-manual-focusable--focused {
+  background: var(--panel-2);
+}
+.ui-menu .q-item__label--header {
+  color: var(--mute);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Diálogo */
+.ui-dialog {
+  width: 760px;
+  max-width: 96vw;
+  max-height: calc(100dvh - 24px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  color: var(--ink);
+  background:
+    radial-gradient(520px 240px at 0% 0%, rgba(225, 148, 52, 0.16), transparent 70%),
+    #fffaf1 !important;
+  box-shadow: 0 40px 90px rgba(40, 20, 8, 0.45);
+  overflow: hidden;
+}
+.ui-dialog.wide {
+  width: 820px;
+}
+.ui-dh {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px 8px;
+}
+.ui-dh h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: var(--choco);
+}
+.ui-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+.ui-db {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 24px 14px;
+  overflow-y: auto;
+}
+.ui-df {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 24px 20px;
+  border-top: 1px solid var(--line);
+}
+.ui-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.ui-field .q-field__control {
+  background: rgba(255, 255, 255, 0.7);
+}
+.ui-label {
+  margin: 4px 0 -4px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.ui-quick,
+.ui-states {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--mute);
+}
+.ui-sec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.ui-sec-head h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.ui-warn {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--mid);
+  background: rgba(176, 114, 15, 0.12);
+  font-size: 13px;
+}
+.ui-live {
+  --tone: var(--mid);
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(217, 130, 43, 0.08);
+}
+.ui-live.hi {
+  --tone: var(--hi);
+}
+.ui-live.mid {
+  --tone: var(--mid);
+}
+.ui-live-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.ui-live-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ui-live-grid span {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.ui-live-grid b {
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+.ui-live-grid b.tone {
+  color: var(--tone);
+}
+
+/* ---------- Teléfono / tablet ---------- */
+@media (max-width: 1023px) {
+  .ui-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 599px) {
+  .ui-wrap {
+    padding-top: 18px;
+  }
+  .ui-cta {
+    width: 100%;
+  }
+  .ui-stats {
+    gap: 10px;
+  }
+  .ui-stat {
+    padding: 12px;
+    gap: 10px;
+  }
+  .ui-stat-ico {
+    width: 38px;
+    height: 38px;
+  }
+  .ui-stat-v {
+    font-size: 21px;
+  }
+  .ui-stat-h {
+    display: none;
+  }
+  .ui-two {
+    grid-template-columns: 1fr;
+  }
+  .ui-dialog,
+  .ui-dialog.wide {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+  .ui-dh,
+  .ui-db,
+  .ui-df {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .ui-df .ui-cta,
+  .ui-df .ui-ghost {
+    flex: 1;
+  }
+
+  /* La tabla de pedidos se convierte en tarjetas */
+  .ui-table .q-table {
+    display: block;
+  }
+  .ui-table .q-table thead {
+    display: none;
+  }
+  .ui-table .q-table tbody,
+  .ui-table .q-table tr {
+    display: block;
+  }
+  .ui-table .q-table tr.ui-tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 14px;
+    margin: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fffdf9;
+    box-shadow: 0 4px 14px rgba(92, 48, 14, 0.08);
+  }
+  .ui-table .q-table tr.ui-tr td {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    height: auto;
+    text-align: left;
+  }
+  .ui-table .q-table tr.ui-tr td::before {
+    display: none;
+  }
+  .ui-lab {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .ui-table .q-table tr.ui-tr td.full {
+    grid-column: 1 / -1;
+  }
+  .ui-table .q-table tbody td:after {
+    display: none;
+  }
+  .ui-table .q-table tr.ui-tr:hover td {
+    background: transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =====================================================================
+   Notificaciones (q-notify) con aspecto profesional.
+   Reemplaza los bloques rojos/verdes saturados por tarjetas crema con
+   una franja de color; funciona en todo el sistema sin tocar las páginas.
+   ===================================================================== */
+.q-notification {
+  min-width: 260px;
+  max-width: min(440px, calc(100vw - 32px));
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 14px;
+  color: var(--ink) !important;
+  background: #fffaf1 !important;
+  box-shadow: 0 14px 36px rgba(40, 20, 8, 0.28);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.q-notification .q-notification__message {
+  padding: 0;
+}
+.q-notification .q-icon {
+  font-size: 22px;
+}
+.q-notification.bg-positive {
+  border-left-color: var(--hi);
+}
+.q-notification.bg-positive .q-icon {
+  color: var(--hi);
+}
+.q-notification.bg-negative {
+  border-left-color: var(--neg);
+}
+.q-notification.bg-negative .q-icon {
+  color: var(--neg);
+}
+.q-notification.bg-warning {
+  border-left-color: var(--mid);
+}
+.q-notification.bg-warning .q-icon {
+  color: var(--mid);
+}
+.q-notification.bg-info {
+  border-left-color: var(--accent);
+}
+.q-notification.bg-info .q-icon {
+  color: var(--accent);
+}
+.q-notification .q-btn {
+  color: var(--accent-ink);
+}
+
+/* Aviso dentro de un formulario (errores al guardar, sin ventanas rojas) */
+.ui-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(191, 58, 44, 0.28);
+  border-left: 4px solid var(--neg);
+  border-radius: 12px;
+  background: rgba(191, 58, 44, 0.07);
+  color: var(--ink);
+  font-size: 14px;
+  animation: uiRise 0.3s var(--ease) both;
+}
+.ui-alert .q-icon {
+  margin-top: 1px;
+  color: var(--neg);
+}
+.ui-alert b {
+  display: block;
+  margin-bottom: 2px;
+}
+.ui-alert span {
+  color: var(--mute);
+}
+.ui-alert.warn {
+  border-color: rgba(176, 114, 15, 0.3);
+  border-left-color: var(--mid);
+  background: rgba(176, 114, 15, 0.08);
+}
+.ui-alert.warn .q-icon {
+  color: var(--mid);
+}
+
+/* ---------- Campos legibles aunque Quasar esté en modo oscuro ---------- */
+.ui-page .q-field__label,
+.ui-dialog .q-field__label {
+  color: var(--mute) !important;
+}
+.ui-page .q-field--focused .q-field__label,
+.ui-dialog .q-field--focused .q-field__label {
+  color: var(--accent-ink, var(--accent)) !important;
+}
+.ui-page .q-field__native,
+.ui-page .q-field__input,
+.ui-page .q-field__prefix,
+.ui-page .q-field__suffix,
+.ui-page .q-field__append,
+.ui-dialog .q-field__native,
+.ui-dialog .q-field__input,
+.ui-dialog .q-field__prefix,
+.ui-dialog .q-field__suffix,
+.ui-dialog .q-field__append,
+.ui-dialog .q-select__dropdown-icon {
+  color: var(--ink) !important;
+}
+.ui-dialog .q-field__control {
+  background: rgba(255, 255, 255, 0.85) !important;
+}
+.ui-dialog .q-field--outlined .q-field__control:before {
+  border-color: rgba(59, 33, 18, 0.25) !important;
+}
+.ui-dialog .q-field--outlined:hover .q-field__control:before {
+  border-color: var(--accent-2) !important;
+}
+.ui-dialog .q-field__bottom {
+  color: var(--neg) !important;
+}
+.ui-menu,
+.ui-menu.q-menu--dark {
+  background: #fffaf2 !important;
+  color: var(--ink) !important;
+}
+.ui-menu .q-item,
+.ui-menu .q-item__label {
+  color: var(--ink) !important;
+}
+.ui-menu .q-item__label--caption {
+  color: var(--mute) !important;
+}
+.ui-dialog .q-btn--flat,
+.ui-dialog .q-spinner {
+  color: inherit;
+}
+
+/* =====================================================================
+   AGREGAR AL FINAL DE src/css/ui.css
+   Clases que usa pagos.vue y que no existían en el ui.css nuevo:
+   .ui-card, .ui-card-h, .ui-count, .ui-empty-ico.good
+   ===================================================================== */
+
+/* Tarjeta contenedora (Cuentas por cobrar) */
+.ui-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 10px 28px rgba(92, 48, 14, 0.1);
+  overflow: hidden;
+}
+.ui-card-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(217, 130, 43, 0.06);
+}
+/* Quasar da a los h3 un tamaño enorme: aquí se fija el del encabezado */
+.ui-card-h h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--choco);
+}
+.ui-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(194, 106, 28, 0.14);
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.ui-empty-ico.good {
+  color: var(--hi);
+  background: rgba(42, 132, 83, 0.12);
+}
+
+/* Barra de avance de cada cuenta: ocupa todo el ancho de la tarjeta */
+.pg-recv .ui-meter {
+  max-width: none;
+  height: 8px;
+}
